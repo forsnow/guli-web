@@ -46,7 +46,7 @@
                    :width="300"
                    :height="300"
                    :key="imagecropperKey"
-                   :url="BASE_API+'/eduoss/eduoss/file'"
+                   :url="BASE_API+'/eduoss/file'"
                    field="file"
                    @close="close"
                    @crop-upload-success="cropSuccess"/>
@@ -67,6 +67,8 @@ import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
 
 export default {
+  components : {ImageCropper,PanThumb},
+
   data() {
     return {
       teacher: {
@@ -98,11 +100,14 @@ export default {
 
   methods: {
     close(){
-
+        this.imagecropperShow=false
     },
 
-    cropSuccess(){
-
+    cropSuccess(data){
+      this.imagecropperShow=false;
+      //上传之后返回图片地址
+      this.teacher.avatar = data.url;
+      this.imagecropperKey = this.imagecropperKey+1;
     },
 
     init() {
