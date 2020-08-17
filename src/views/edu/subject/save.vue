@@ -5,7 +5,7 @@
         <el-tag type="info">excel模版说明</el-tag>
         <el-tag>
           <i class="el-icon-download"/>
-          <a :href="OSS_PATH + '/static/01.xlxs'">点击下载模版</a>
+          <a :href="OSS_PATH + '/2020-08-17-8fbc77964b794fb0bcecd41a5f922435-01.xlsx'">点击下载模版</a>
         </el-tag>
 
       </el-form-item>
@@ -18,9 +18,9 @@
           :on-error="fileUploadError"
           :disabled="importBtnDisabled"
           :limit="1"
-          :action="BASE_API+'/admin/edu/subject/import'"
+          :action="BASE_API+'/eduservice/edu-subject/addSubject'"
           name="file"
-          accept="application/vnd.ms-excel">
+          accept=".xlsx,.xls">
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
           <el-button
             :loading="loading"
@@ -51,7 +51,32 @@ export default {
     },
 
     methods: {
+      submitUpload(){
+          this.fileUploadBtnText = '正在上传'
+          this.importBtnDisabled = true
+          this.loading = true
+          this.$refs.upload.submit()
+      },
 
+      fileUploadSuccess(response){
+        if (response.success === true) {
+        this.fileUploadBtnText = '导入成功'
+        this.loading = false
+        this.$message({
+        type: 'success',
+        message: response.message
+          })
+       } 
+      },
+      fileUploadError(response){
+        this.fileUploadBtnText = '导入失败'
+        this.loading = false
+        this.$message({
+        type: 'error',
+        message: '导入失败'
+      })
     }
-}
+    }
+    
+    }
 </script>
