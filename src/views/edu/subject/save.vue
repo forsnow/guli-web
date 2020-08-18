@@ -67,6 +67,7 @@ export default {
         message: response.message
           })
        } 
+        this.$router.push({path:'/subject/list'})
       },
       fileUploadError(response){
         this.fileUploadBtnText = '导入失败'
