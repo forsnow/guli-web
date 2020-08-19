@@ -20,7 +20,7 @@
   <el-form-item label="课程分类">
     <el-select
       v-model="courseInfo.subjectParentId"
-      placeholder="请选择">
+      placeholder="一级分类">
       <el-option
         v-for="subject1 in subjectFisrtList"
         :key="subject1.id"
@@ -83,7 +83,8 @@ export default {
                  price: 0
             },
             teacherList: [],
-            subjectFisrtList: []
+            subjectFisrtList: [],
+            subjectSecondList: []
         }
     },
 
