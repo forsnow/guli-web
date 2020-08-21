@@ -20,5 +20,22 @@ export default{
             url: `${teacher_api}/findAll`,
             method: 'get',
         })
-    }   
+    },
+    
+    //根据id查询课程
+    getCourseInfoById(courseId){
+        return request({
+            url: `${course_api}/getCourseInfo/${courseId}`,
+            method: 'get'
+        })
+    },
+
+    //修改课程信息
+    updateCourseInfo(courseInfo){
+        return request({
+            url: `${course_api}/updateCourseInfo`,
+            method: 'post',
+            data: courseInfo
+        })
+    }
 }

@@ -111,17 +111,36 @@ export default {
             teacherList: [],
             subjectFisrtList: [],
             subjectSecondList: [],
-            BASE_API: process.env.BASE_API//接口API地址
+            BASE_API: process.env.BASE_API,//接口API地址
+            courseId:''
         }
     },
 
     created(){
         console.log('info created')
-        this.getTeacherList();
-        this.getSubject();
+        this.init();
     },
 
     methods:{
+        //初始化获取路由传过来的courseId值
+        init(){
+             if (this.$route.params && this.$route.params.id) {
+                  this.courseId = this.$route.params.id;
+                  this.getCouseByid();
+               }else{
+                  this.getTeacherList();
+                  this.getSubject();
+               }
+        },
+
+        //根据课程id查询
+        getCouseByid(){
+            course.getCourseInfoById(this.courseId).then(response =>{
+                this.courseInfo = response.data.courseInfo;
+                //1.查询所有的一级分类和二级分类       
+            })
+        },
+
         SaveOrUpdate(){
             console.log('next')
             course.addCourseInfo(this.courseInfo).then(response => {
