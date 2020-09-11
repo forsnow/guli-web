@@ -37,5 +37,20 @@ export default{
             method: 'post',
             data: courseInfo
         })
+    },
+    //修改课程信息
+    getCoursePublishInfo(courseId){
+        return request({
+            url: `${course_api}/getCoursePublishInfo/${courseId}`,
+            method: 'get',
+        })
+    },
+
+    //发布课程信息
+    publishCourse(courseId){
+        return request({
+            url: `${course_api}/publishCourse/${courseId}`,
+            method: 'post',
+        })
     }
 }
