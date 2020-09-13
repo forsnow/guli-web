@@ -52,5 +52,13 @@ export default{
             url: `${course_api}/publishCourse/${courseId}`,
             method: 'post',
         })
+    },
+    
+    //获取课程列表
+    getCourseList(){
+        return request({
+            url: `${course_api}/getCourseList`,
+            method: 'get'
+        })
     }
 }

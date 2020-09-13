@@ -41,10 +41,7 @@
         </ul>
     </li>
 </ul>
-<div>
-    <el-button @click="previous">上一步</el-button>
-    <el-button :disabled="saveBtnDisabled" type="primary" @click="next">下一步</el-button>
-</div>
+
 
 <!-- 添加和修改章节表单 -->
 <el-dialog :visible.sync="dialogChapterFormVisible" title="添加章节">
@@ -86,6 +83,11 @@
     <el-button :disabled="saveVideoBtnDisabled" type="primary" @click="saveOrUpdateVideo">确 定</el-button>
   </div>
 </el-dialog>
+
+<div>
+    <el-button @click="previous">上一步</el-button>
+    <el-button :disabled="saveBtnDisabled" type="primary" @click="next">下一步</el-button>
+</div>
   </div>
 </template>
 
