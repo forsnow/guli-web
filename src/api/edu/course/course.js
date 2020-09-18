@@ -55,10 +55,30 @@ export default{
     },
     
     //获取课程列表
-    getCourseList(){
+    getCourseListPage(page,limit,teacherQuery){
         return request({
-            url: `${course_api}/getCourseList`,
-            method: 'get'
+            url: `${course_api}/getCourseListPage/${page}/${limit}`,
+            method: 'get',
+            data:teacherQuery
         })
-    }
+    },
+
+    //条件分页查询讲师信息
+    getCourseListConditionPage(page,limit,courseQuery){
+        return request({
+            url: `${course_api}/getCourseListConditionPage/${page}/${limit}`,
+            method: 'post',
+            data: courseQuery
+          })
+    },
+
+    //根据讲师ID删除课程信息
+    delCourseById(courseID){
+        return request({
+            url: `${course_api}/${courseID}`,
+            method: 'delete'
+        })
+    },
+
+
 }
